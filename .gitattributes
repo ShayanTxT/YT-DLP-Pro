@@ -1,0 +1,7 @@
+# Normalise line endings: scripts for Windows keep CRLF, everything else LF.
+* text=auto eol=lf
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.png binary
+*.jpg binary
+*.gif binary

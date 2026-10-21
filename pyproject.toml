@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ytd-pro"
+version = "2.0.0"
+description = "The YouTube downloader that works while you browse — clipboard watch, clip/GIF maker, smart sizes, SponsorBlock, channel subscriptions."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+    { name = "shayan.txt" }
+]
+keywords = ["youtube", "downloader", "yt-dlp", "cli", "video", "mp3", "sponsorblock"]
+classifiers = [
+    "Environment :: Console",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3",
+    "Topic :: Multimedia :: Video",
+    "Topic :: Internet :: WWW/HTTP",
+]
+dependencies = [
+    "yt-dlp>=2025.1.1",
+    "rich>=13.7.0",
+    "textual>=0.80.0",
+    "pyperclip>=1.8.2",
+]
+
+[project.urls]
+Homepage = "https://github.com/ShayanTxT/ytd-pro"
+Issues = "https://github.com/ShayanTxT/ytd-pro/issues"
+
+[project.scripts]
+ytd = "yt_downloader:cli"
+
+[tool.setuptools]
+py-modules = ["yt_downloader", "ytd_tui"]

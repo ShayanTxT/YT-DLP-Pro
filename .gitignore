@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+
+# PyInstaller build output
+build/
+dist/
+*.spec
+
+# Downloads & partial files
+downloads/
+Downloads/
+*.part
+*.ytdl
+*.temp.*
+
+# App data (created at runtime in ~/.ytdpro, but just in case)
+.ytdpro/
+archive.txt
+
+# IDE / OS
+.vscode/
+.idea/
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# User batch files (keep links.example.txt)
+links.txt
+my-links.txt
+
+# Tooling caches and temp files
+.pytest_cache/
+*.tmp

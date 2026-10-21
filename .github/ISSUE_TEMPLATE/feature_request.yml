@@ -1,0 +1,22 @@
+name: Feature request
+description: Suggest an idea for YT-DLP Pro
+title: "[Feature] "
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem would this solve?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Describe the feature you'd like
+      placeholder: "Example: a --notify flag that shows a Windows toast when downloads finish..."
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives you've considered (optional)

@@ -1,0 +1,48 @@
+name: Bug report
+description: Something does not work as expected
+title: "[Bug] "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        > YouTube changes constantly — **please run `ytd --update` first** and try again.
+        > That alone fixes the majority of download errors.
+  - type: input
+    id: version
+    attributes:
+      label: Version (`ytd --version` output)
+      placeholder: "YT-DLP Pro 2.0.0 | yt-dlp 2026.xx.xx"
+    validations:
+      required: true
+  - type: textarea
+    id: command
+    attributes:
+      label: Command you ran
+      placeholder: ytd "https://..." -q 720
+    validations:
+      required: true
+  - type: textarea
+    id: error
+    attributes:
+      label: What happened? (full error message)
+    validations:
+      required: true
+  - type: dropdown
+    id: install
+    attributes:
+      label: How did you install it?
+      options:
+        - Release EXE
+        - Windows EXE (release)
+        - Linux binary (release)
+        - install.bat (Windows, from source)
+        - install.sh (Linux, from source)
+        - pip
+  - type: input
+    id: os
+    attributes:
+      label: Operating system
+      placeholder: "Windows 11 23H2  /  Ubuntu 24.04 (X11 or Wayland)"
+    validations:
+      required: true
