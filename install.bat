@@ -40,6 +40,12 @@ if errorlevel 1 (
 ) else (
     echo  [2/5] FFmpeg found. OK
 )
+REM Deno: JavaScript runtime that yt-dlp needs to download full-quality YouTube formats
+where deno >nul 2>&1
+if errorlevel 1 (
+    echo  [2/5] Installing Deno (YouTube JavaScript runtime) ...
+    winget install -e --id DenoLand.Deno --accept-source-agreements --accept-package-agreements
+)
 
 REM ─── 4) Virtual environment + libraries ───
 echo  [3/5] Installing libraries (yt-dlp + rich + textual + pyperclip) ...

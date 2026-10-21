@@ -23,7 +23,7 @@ classifiers = [
     "Topic :: Internet :: WWW/HTTP",
 ]
 dependencies = [
-    "yt-dlp>=2025.1.1",
+    "yt-dlp[default]>=2025.11.12",
     "rich>=13.7.0",
     "textual>=0.80.0",
     "pyperclip>=1.8.2",

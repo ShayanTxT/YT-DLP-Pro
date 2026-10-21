@@ -29,6 +29,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - **Test suite:** `tests/test_core.py` (pytest), including a headless TUI start/quit test. Runs in CI on Windows and Linux.
 
 ### Fixed
+- A link pasted by hand is no longer queued a second time when Clipboard Watch sees it on the clipboard.
+- The "No supported JavaScript runtime" warning is shown once with an install hint instead of for every job.
+- `yt-dlp[default]` is now required (it includes `yt-dlp-ejs`, which YouTube downloads need).
+- `install.bat` installs Deno (`DenoLand.Deno`) next to FFmpeg, and warns when another `YT-DLP` program shadows the command.
 - `--update` no longer tries to pip-upgrade itself inside the standalone EXE; it explains how to get the newest release.
 - Settings and history are written atomically, so a crash can't corrupt them. A corrupt file is ignored instead of crashing.
 - GIF conversion has a timeout and can no longer hang the app.

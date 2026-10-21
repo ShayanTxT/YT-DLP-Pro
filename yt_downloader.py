@@ -381,14 +381,29 @@ def get_clipboard() -> str | None:
 # ---------------------------------------------------------------------------
 # yt-dlp logger + Rich progress bridge
 # ---------------------------------------------------------------------------
+def deno_install_hint() -> str:
+    if os.name == "nt":
+        return "winget install DenoLand.Deno"
+    return "curl -fsSL https://deno.land/install.sh | sh"
+
+
 class YtdLogger:
     """Silence yt-dlp chatter; surface only what matters."""
+
+    _js_hint_shown = False  # yt-dlp repeats the JS-runtime warning for every job; show it once
 
     def debug(self, msg: str) -> None:
         pass
 
     def warning(self, msg: str) -> None:
-        if "ffmpeg" not in msg.lower():
+        low = msg.lower()
+        if "javascript runtime" in low:
+            if not YtdLogger._js_hint_shown:
+                YtdLogger._js_hint_shown = True
+                say("[yellow]  ! YouTube needs the Deno JavaScript runtime for all formats.[/yellow]")
+                say(f"[yellow]    Install it once, then restart: {deno_install_hint()}[/yellow]")
+            return
+        if "ffmpeg" not in low:
             say(f"[dim yellow]  ! {msg}[/dim yellow]")
 
     def error(self, msg: str) -> None:

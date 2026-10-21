@@ -222,6 +222,7 @@ class YtdTui(App):
         self.jobs: "queue.Queue[Job | None]" = queue.Queue()
         self._watch_stop: threading.Event | None = None
         self._watch_thread: threading.Thread | None = None
+        self._queued_urls: set[str] = set()   # every link queued this session, by hand or by Watch
 
     def _default_quality(self) -> str:
         keys = {k for _, k in QUALITY_OPTIONS}
@@ -456,6 +457,7 @@ class YtdTui(App):
             max_bytes=max_bytes,
         )
         self.jobs.put(job)
+        self._queued_urls.update(u.rstrip(".,;:!?") for u in core.URL_RE.findall(text))
         self._log(f"[dim]+ queued:[/dim] {text}")
         url_box.value = ""
         self._set_status(f"Queued ({self.jobs.qsize()} waiting)")
@@ -472,9 +474,10 @@ class YtdTui(App):
             last = text
             for raw in core.URL_RE.findall(text):
                 url = raw.rstrip(".,;:!?")
-                if url in seen or not core._is_supported_host(url):
+                if url in seen or url in self._queued_urls or not core._is_supported_host(url):
                     continue
                 seen.add(url)
+                self._queued_urls.add(url)
                 self.jobs.put(Job(target=url, mode=mode, quality=quality,
                                   sb=core.SB_DEFAULT if self.config.get("clean_default") else None))
                 self._log(f"[bold green]>> Watch:[/bold green] {url}")
