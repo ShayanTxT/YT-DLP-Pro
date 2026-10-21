@@ -43,7 +43,7 @@ if errorlevel 1 (
 REM Deno: JavaScript runtime that yt-dlp needs to download full-quality YouTube formats
 where deno >nul 2>&1
 if errorlevel 1 (
-    echo  [2/5] Installing Deno (YouTube JavaScript runtime) ...
+    echo  [2/5] Installing Deno ^(YouTube JavaScript runtime^) ...
     winget install -e --id DenoLand.Deno --accept-source-agreements --accept-package-agreements
 )
 
